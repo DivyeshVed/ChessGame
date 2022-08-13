@@ -5,20 +5,20 @@ import com.chess.engine.board.BoardUtils;
 import com.chess.engine.board.Move;
 import com.chess.engine.board.Tile;
 import com.google.common.collect.ImmutableList;
-
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Knight extends Piece{
 
     private final static int[] CANDIDATE_MOVE_COORDINATES = {-17, -15, -10, -6, 6, 10, 15, 17};
 
-    Knight(final int piecePosition, final Alliance pieceAlliance) {
+    public Knight(final Alliance pieceAlliance, final int piecePosition) {
         super(piecePosition, pieceAlliance);
     }
 
     @Override
-    public List<Move> calculateLegalMoves(final Board board) {
+    public Collection<Move> calculateLegalMoves(final Board board) {
 
         final List<Move> legalMoves = new ArrayList<>();
 
@@ -33,7 +33,7 @@ public class Knight extends Piece{
                 }
                 final Tile candidateDestinationTile = board.getTile(candidateDestinationCoordinate);
                 if(!candidateDestinationTile.isTileOccupied()) {
-                    legalMoves.add(new Move.MajorMove(board,this,candidateDestinationCoordinate,));
+                    legalMoves.add(new Move.MajorMove(board,this,candidateDestinationCoordinate));
                 } else{
                     final Piece pieceAtDestination = candidateDestinationTile.getPiece();
                     final Alliance pieceAlliance = pieceAtDestination.getPieceAlliance();
