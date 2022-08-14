@@ -50,6 +50,11 @@ public abstract class Tile {
             super(coordinate);
         }
 
+        @Override
+        public String toString(){
+            return "-";
+        }
+
         // Overriding the abstract isTileOccupied class. In this case the return would be false, as the tile is empty.
         @Override
         public boolean isTileOccupied(){
@@ -74,6 +79,10 @@ public abstract class Tile {
             this.pieceOnTile = pieceOnTile;
         }
 
+        @Override
+        public String toString(){
+            return getPiece().getPieceAlliance().isBlack() ? getPiece().toString().toLowerCase() : getPiece().toString();
+        }
         // Overriding the isTileOccupied method to return true as there is a piece on the tile.
         @Override
         public boolean isTileOccupied(){
