@@ -10,7 +10,7 @@ public abstract class Piece {
     protected final int piecePosition;
     protected final Alliance pieceAlliance;
     protected final boolean isFirstMove;
-    private final int cacheHashCode;
+    private final int cachedHashCode;
 
     Piece(final PieceType pieceType, int piecePosition, final Alliance pieceAlliance){
         this.piecePosition = piecePosition;
@@ -18,12 +18,12 @@ public abstract class Piece {
         this.pieceType = pieceType;
         //TODO more work here!!!
         this.isFirstMove = false;
-        this.cacheHashCode = computeHashCode();
+        this.cachedHashCode = computeHashCode();
     }
 
     @Override
     public int hashCode() {
-        return this.cacheHashCode;
+        return this.cachedHashCode;
     }
 
     @Override
